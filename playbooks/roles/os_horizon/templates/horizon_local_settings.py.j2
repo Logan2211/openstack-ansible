@@ -710,3 +710,8 @@ REST_API_REQUIRED_SETTINGS = ['OPENSTACK_HYPERVISOR_FEATURES']
 # For more information see:
 # http://tinyurl.com/anticlickjack
 #DISALLOW_IFRAME_EMBED = True
+
+{% if horizon_customization_module is defined %}
+#custom python module with horizon dashboard theme overrides
+HORIZON_CONFIG["customization_module"] = '{{ horizon_customization_module }}.overrides'
+{% endif %}
