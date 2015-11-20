@@ -1,0 +1,14 @@
+# {{ ansible_managed }}
+
+server:
+{% for container in groups['all_containers'] %}
+	local-data: "{{ container }}.{{ unbound_regional_zone }} A {{ hostvars[container]['ansible_ssh_host'] }}"
+{% endfor %}
+
+{% for container in groups['hosts'] %}
+	local-data: "{{ container }}.{{ unbound_regional_zone }} A {{ hostvars[container]['ansible_ssh_host'] }}"
+{% endfor %}
+
+{% for item in unbound_records %}
+	local-data: "{{ item.host }} {{ item.type|default('A') }} {{ item.val }}"
+{% endfor %}

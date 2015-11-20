@@ -1,0 +1,8 @@
+# {{ ansible_managed }}
+
+{% for item in groups['unbound'] %}
+# {{ item }}
+nameserver {{ hostvars[item]['ansible_ssh_host'] }}
+{% endfor %}
+
+search{% for item in unbound_search_domains %} {{ item }}{% endfor %}

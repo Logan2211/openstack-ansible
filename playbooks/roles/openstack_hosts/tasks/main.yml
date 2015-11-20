@@ -18,6 +18,7 @@
 - include: openstack_host_packages.yml
 - include: openstack_sysstat.yml
 - include: openstack_update_hosts_file.yml
+  when: groups['unbound'] is not defined
 - include: openstack_lvm_config.yml
 - include: openstack_kernel_check.yml
 - include: openstack_kernel_modules.yml

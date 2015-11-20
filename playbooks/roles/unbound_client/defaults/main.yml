@@ -1,0 +1,3 @@
+---
+unbound_search_domains:
+  - "{{ unbound_regional_zone }}"

@@ -1,0 +1,29 @@
+---
+
+- name: Update container resolvers
+  template:
+    src: resolve-base.j2
+    dest: "/run/resolvconf/resolv.conf"
+  tags:
+    - unbound-client-config
+
+- name: Update container resolvconf base
+  template:
+    src: resolve-base.j2
+    dest: "/etc/resolvconf/resolv.conf.d/base"
+  tags:
+    - unbound-client-config
+
+- name: Update container resolvconf tail
+  copy:
+    content: "# Null Tail\n"
+    dest: "/etc/resolvconf/resolv.conf.d/tail"
+  tags:
+    - unbound-client-config
+
+- name: Update container resolvconf original
+  copy:
+    content: "# Null original\n"
+    dest: "/etc/resolvconf/resolv.conf.d/original"
+  tags:
+    - unbound-client-config
