@@ -46,6 +46,58 @@
   tags:
     - horizon-configs
 
+- name: Ensure horizon policy directory
+  file:
+    path: "/etc/horizon/policy"
+    state: directory
+    owner: "{{ horizon_system_user_name }}"
+    group: "{{ horizon_system_group_name }}"
+    mode: "0755"
+  tags:
+    - horizon_configs
+
+- name: Copy service policies
+  config_template:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    owner: "{{ horizon_system_user_name }}"
+    group: "{{ horizon_system_group_name }}"
+    mode: "0644"
+    config_overrides: "{{ item.config_overrides }}"
+    config_type: "{{ item.config_type }}"
+  with_items:
+    - src: "keystone_policy.json.j2"
+      dest: "/etc/horizon/policy/keystone_policy.json"
+      config_overrides: "{{ keystone_policy_overrides|default({}) }}"
+      config_type: "json"
+    - src: "nova_policy.json.j2"
+      dest: "/etc/horizon/policy/nova_policy.json"
+      config_overrides: "{{ nova_policy_overrides|default({}) }}"
+      config_type: "json"
+    - src: "cinder_policy.json.j2"
+      dest: "/etc/horizon/policy/cinder_policy.json"
+      config_overrides: "{{ cinder_policy_overrides|default({}) }}"
+      config_type: "json"
+    - src: "glance_policy.json.j2"
+      dest: "/etc/horizon/policy/glance_policy.json"
+      config_overrides: "{{ glance_policy_overrides|default({}) }}"
+      config_type: "json"
+    - src: "heat_policy.json.j2"
+      dest: "/etc/horizon/policy/heat_policy.json"
+      config_overrides: "{{ heat_policy_overrides|default({}) }}"
+      config_type: "json"
+    - src: "neutron_policy.json.j2"
+      dest: "/etc/horizon/policy/neutron_policy.json"
+      config_overrides: "{{ neutron_policy_overrides|default({}) }}"
+      config_type: "json"
+    - src: "ceilometer_policy.json.j2"
+      dest: "/etc/horizon/policy/ceilometer_policy.json"
+      config_overrides: "{{ ceilometer_policy_overrides|default({}) }}"
+      config_type: "json"
+  notify: Restart apache2
+  tags:
+    - horizon-configs
+
 - name: Create horizon links
   file:
     src: "{{ item.src }}"
@@ -55,6 +107,7 @@
     state: "link"
   with_items:
     - { src: "/etc/horizon/local_settings.py", dest: "{{ horizon_lib_dir }}/openstack_dashboard/local/local_settings.py" }
+    - { src: "/etc/horizon/policy", dest: "{{ horizon_lib_dir }}/openstack_dashboard/local/policy" }
   tags:
     - horizon-configs
 

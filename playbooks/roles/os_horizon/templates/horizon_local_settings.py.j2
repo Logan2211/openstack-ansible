@@ -399,7 +399,7 @@ ENFORCE_PASSWORD_CHECK = {{ horizon_enforce_password_check }}
 # target installation.
 
 # Path to directory containing policy.json files
-#POLICY_FILES_PATH = os.path.join(ROOT_PATH, "conf")
+POLICY_FILES_PATH = os.path.join(LOCAL_PATH, "policy")
 # Map of local copy of service policy files.
 # Please insure that your identity policy file matches the one being used on
 # your keystone servers. There is an alternate policy file that may be used
@@ -410,15 +410,15 @@ ENFORCE_PASSWORD_CHECK = {{ horizon_enforce_password_check }}
 # policy.v3cloudsample.json
 # Having matching policy files on the Horizon and Keystone servers is essential
 # for normal operation. This holds true for all services and their policy files.
-#POLICY_FILES = {
-#    'identity': 'keystone_policy.json',
-#    'compute': 'nova_policy.json',
-#    'volume': 'cinder_policy.json',
-#    'image': 'glance_policy.json',
-#    'orchestration': 'heat_policy.json',
-#    'network': 'neutron_policy.json',
-#    'telemetry': 'ceilometer_policy.json',
-#}
+POLICY_FILES = {
+    'identity': 'keystone_policy.json',
+    'compute': 'nova_policy.json',
+    'volume': 'cinder_policy.json',
+    'image': 'glance_policy.json',
+    'orchestration': 'heat_policy.json',
+    'network': 'neutron_policy.json',
+    'telemetry': 'ceilometer_policy.json',
+}
 
 # Trove user and database extension support. By default support for
 # creating users and databases on database instances is turned on.
