@@ -145,6 +145,7 @@ pushd "playbooks"
 
     install_bits galera-install.yml
     install_bits rabbitmq-install.yml
+    install_bits etcd-install.yml
     install_bits utility-install.yml
 
     if [ "${DEPLOY_LOGGING}" == "yes" ]; then

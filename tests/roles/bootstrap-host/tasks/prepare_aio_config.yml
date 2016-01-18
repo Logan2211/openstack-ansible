@@ -74,6 +74,8 @@
       override: "{{ swift_env_overrides | default({}) }}"
     - name: utility.yml
       override: "{{ utility_env_overrides | default({}) }}"
+    - name: etcd.yml
+      override: "{{ etcd_env_overrides | default({}) }}"
   tags:
     - deploy-envd
 
@@ -146,4 +148,11 @@
     src: user_variables.aio.yml.j2
     dest: /etc/openstack_deploy/user_variables.yml
     config_overrides: "{{ user_variables_overrides | default({}) }}"
+    config_type: yaml
+
+- name: Set the user_calico
+  config_template:
+    src: "../etc/openstack_deploy/user_calico.yml"
+    dest: /etc/openstack_deploy/user_calico.yml
+    config_overrides: "{{ user_calico_overrides | default({}) }}"
     config_type: yaml

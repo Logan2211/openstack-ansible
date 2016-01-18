@@ -132,6 +132,13 @@
       neutron_provider_networks: "{{ _provider_networks }}"
       tags:
         - "os-neutron"
+    - role: "calico"
+      when:
+        - neutron_ml2_mechanism_drivers is defined
+        - neutron_ml2_mechanism_drivers == 'calico'
+      tags:
+        - calico
+        - neutron-calico
     - { role: "openstack_openrc", tags: [ "openstack-openrc" ] }
     - role: "rsyslog_client"
       rsyslog_client_log_rotate_file: neutron_log_rotate

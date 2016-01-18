@@ -38,15 +38,6 @@ component_skel:
 
 
 container_skel:
-  nova_api_metadata_container:
-    belongs_to:
-      - infra_containers
-      - os-infra_containers
-    contains:
-      - nova_api_metadata
-    properties:
-      service_name: nova
-      container_release: trusty
   nova_api_os_compute_container:
     belongs_to:
       - infra_containers
@@ -69,7 +60,8 @@ container_skel:
     belongs_to:
       - compute_containers
     contains:
-      - neutron_linuxbridge_agent
+      - neutron_dhcp_agent
+      - nova_api_metadata
       - nova_compute
     properties:
       is_metal: true

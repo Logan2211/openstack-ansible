@@ -9,3 +9,15 @@
   version: '1.3'
 - src: mattwillsher.sshd
   name: sshd
+- name: etcd
+  scm: git
+  src: https://github.com/Logan2211/ansible-etcd
+  version: master
+- name: bird
+  scm: git
+  src: https://github.com/Logan2211/ansible-bird
+  version: master
+- name: calico
+  scm: git
+  src: https://github.com/Logan2211/ansible-calico
+  version: master

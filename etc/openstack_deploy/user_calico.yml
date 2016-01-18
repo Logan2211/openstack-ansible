@@ -1,0 +1,12 @@
+---
+#user configurable
+bird_bgp_asn: 12345
+
+#base vars for calico deployment on OSA
+neutron_driver_interface: networking_calico.agent.linux.interface.RoutedInterfaceDriver
+neutron_driver_dhcp: networking_calico.agent.linux.dhcp.DnsmasqRouted
+nova_linuxnet_interface_driver: ''
+neutron_ml2_drivers_type: 'local, flat'
+neutron_ml2_mechanism_drivers: calico
+neutron_provider_networks:
+  network_types: "local"
