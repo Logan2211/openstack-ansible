@@ -112,7 +112,7 @@
     - name: set local_ip fact (is_metal)
       set_fact:
         _local_ip: "{{ hostvars[inventory_hostname]['ansible_' + _overlay_network.bridge|replace('-', '_')]['ipv4']['address'] }}"
-      when: is_metal | bool
+      when: (is_metal | bool) and (_overlay_network.bridge is defined)
       tags:
         - neutron-config
 
