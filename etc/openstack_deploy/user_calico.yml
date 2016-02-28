@@ -10,3 +10,6 @@ neutron_ml2_drivers_type: 'local, flat'
 neutron_ml2_mechanism_drivers: calico
 neutron_provider_networks:
   network_types: "local"
+neutron_dhcp_agent_ini_overrides:
+  DEFAULT:
+    use_namespaces: False
