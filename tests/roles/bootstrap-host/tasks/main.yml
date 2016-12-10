@@ -83,6 +83,13 @@
   tags:
     - prepare-loopback-swift
 
+# Prepare the Ceph cluster UUID and loopback disks
+- include: prepare_ceph.yml
+  when:
+    - "{{ scenario == 'aio_ceph' }}"
+  tags:
+    - prepare-ceph
+
 # Prepare the network interfaces
 - include: prepare_networking.yml
   tags:

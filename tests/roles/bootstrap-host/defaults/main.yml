@@ -44,6 +44,14 @@ bootstrap_host_loopback_nova: yes
 # Size of the Nova loopback disk in gigabytes (GB).
 bootstrap_host_loopback_nova_size: 1024
 
+# Size of the Ceph OSD loopbacks
+bootstrap_host_loopback_ceph_size: 1024
+# Ceph OSDs to create on the AIO host
+ceph_osd_images:
+  - 'ceph1'
+  - 'ceph2'
+  - 'ceph3'
+
 ## Network configuration
 # The AIO bootstrap configures bridges for use with the AIO deployment.
 # By default, these bridges are configured to be independent of any physical

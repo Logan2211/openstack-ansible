@@ -37,6 +37,15 @@
           - name: neutron.yml.aio
           - name: nova.yml.aio
           - name: swift.yml.aio
+        aio_ceph:
+          - name: ceph.yml.aio
+          - name: cinder.yml.aio
+          - name: glance.yml.aio
+          - name: heat.yml.aio
+          - name: horizon.yml.aio
+          - name: keystone.yml.aio
+          - name: neutron.yml.aio
+          - name: nova.yml.aio
   vars:
     sshd:
       ListenAddress:

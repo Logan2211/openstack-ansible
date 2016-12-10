@@ -30,7 +30,7 @@ export OSA_GATE_JOB=true
 # Set the role fetch mode to any option [galaxy, git-clone]
 export ANSIBLE_ROLE_FETCH_MODE="git-clone"
 # Set the scenario to execute based on the first CLI parameter
-export SCENARIO=${1:-"aio"}
+export SCENARIO="aio_ceph"
 
 ## Functions -----------------------------------------------------------------
 info_block "Checking for required libraries." 2> /dev/null || source "$(dirname "${0}")/scripts-library.sh"
